@@ -1,0 +1,39 @@
+body{
+	color:#000000;
+	padding:0px;
+	font-size:12px;
+	font-family:MS UI GOTHIC;
+	background-color:#ccccdd;
+	scrollbar-track-color:#ccccdd;
+	scrollbar-face-color:#ccccdd;
+	scrollbar-arrow-color:#223344;
+	scrollbar-3dlight-color:#ccccdd;
+	scrollbar-darkshadow-color:#ccccdd;
+	scrollbar-highlight-color:#223344;
+	scrollbar-shadow-color:#223344;
+	overflow:auto;
+}
+dl{
+	background-color:#ddddee;
+	border: solid;
+	border-color: #666666;
+	border-width:1px 1px 1px 1px;
+
+}
+dt{
+	font-weight:bold;
+	color:#880000;
+	padding:4px;
+	border: solid;
+	border-color: #ffffff;
+	border-width:0px 0px 1px 0px;
+}
+dd{
+	color:#000000;
+	padding:4px;
+}
+h2{
+	color:#003355;
+	font-weight:bold;
+	font-size:16px;
+}

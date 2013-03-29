@@ -1,0 +1,202 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta name="robots" content="index,follow">
+<title>わくかるく</title>
+<link rel="shortcut icon" href="favicon.ico"> 
+<style>
+table{font-size:12px;}
+input.dsp{ime-mode: disabled; font-size:12px; width:30px; border:0px; background-color:transparent;}
+</style>
+<script language="JavaScript" src="data/main.js"></script>
+<script language="JavaScript1.1">
+// とりあえず動かせるレベルで作った。雑だけど
+
+
+function initsub(){
+	cookieTrap();
+
+	tmp = getCookie("moeclc");
+	uni = getCookie("wkclc");
+
+	for(i=0;i<17;i++)
+		slotdata[i] = tmp.split("\|")[i];
+	for(i=0;i<17;i++)
+		questdata[i] = uni.split("\|")[i];
+
+	document.questlist.slot.selectedIndex = slotdata[16];
+	num = document.questlist.slot.options[document.questlist.slot.selectedIndex].value;
+//	if(top.location.search.substring(1)){
+//		loadCode("url");
+//	}else if(!top.location.search.substring(1) && slotdata[num].split("&")[2] ){
+//		loadCode("cookie");
+//	}
+	for(i=0;i<document.questlist.slot.options.length;i++){
+		if(slotdata[i] != "&&&"){
+			document.questlist.slot.options[i].text
+				= "slot " + i + " : "+ unescape(slotdata[i].split("&")[3]);
+		}if(slotdata[i] == "&&&"){
+			document.questlist.slot.options[i].text
+				= "slot " + i + " : no save";
+		}
+	}
+	loadsub();
+}
+function saveCookiesub(){
+	with(document.questlist){
+		num = slot.options[slot.selectedIndex].value;
+
+		var questslotdata = "";
+
+		for(i=0; i < 19; i++)
+			questslotdata += bank[i].checked *1;
+		for(i=0; i < 3; i++)
+			questslotdata += item[i].checked *1;
+		for(i=0; i < 12; i++)
+			questslotdata += charisma[i].checked *1;
+
+		questdata[num] = questslotdata;
+		tmp = "";
+		for(i=0;i<16;i++){
+			tmp += questdata[i] + "\|";
+		}
+		tmp += num;
+		document.cookie = "wkclc=" + tmp + "; expires=Fri, 31-Dec-2030 23:59:59; ";
+
+		setAlertLayer("Slot "+num+" にセーブしました。<p><form><input type='button' value='閉じる' onclick='offOptionLayer()'></form></p>");
+//		alert(tmp);
+	}
+}
+
+function loadsub(){
+	with(document.questlist){
+		num = slot.options[slot.selectedIndex].value;
+		tmp = questdata[num];
+		for(i=0; i<34; i++){
+			if(i<19) bank[i].checked = eval(tmp.charAt(i));
+			if(19<=i && i<22) item[i-19].checked = eval(tmp.charAt(i));
+			if(22<=i) charisma[i-22].checked = eval(tmp.charAt(i));
+		}
+	}
+	invclc();
+	setAlertLayer("Slot "+num+" をロードしました。<p><form><input type='button' value='閉じる' onclick='offOptionLayer()'></form></p>");
+}
+
+function invclc(){
+	var bsum = 0;
+	var isum = 0;
+	var csum = 0;
+	with(document.questlist){
+
+		for(i=0; i < 19; i++)
+			if(bank[i].checked) bsum += eval(bank[i].value);
+		for(i=0; i < 3; i++)
+			if(item[i].checked) isum += eval(item[i].value);
+		for(i=0; i < 12; i++)
+			if(charisma[i].checked) csum += eval(charisma[i].value);
+
+		bpN.value = bsum;
+		ipN.value = isum;
+		cpN.value = csum;
+
+	}
+}
+
+</script>
+
+
+<body onload="initsub(); invclc()" bgcolor="#ccccdd">
+
+
+<form name="questlist" onsubmit="invclc(); return false;">
+
+<TABLE>
+<TR>
+<TD WIDTH=300 VALIGN=top>
+
+<table width=300>
+<tr><td><b>所持枠拡張数：</b></td><td><input type="text" class="dsp" name="bpN" value="0" readonly></td></tr>
+<tr><td><input type=checkbox name="bank" onclick="if(!this.checked) for(i=1;i<7;i++) bank[i].checked=0; invclc();" value=1 > ジャネット 銀行拡張1 ( 1,000 Gold ) : </td><td><span style="color:red;">+ 1</span></td></tr>
+<tr><td><input type=checkbox name="bank" onclick="if(this.checked){bank[0].checked=1;}else{for(i=2;i<7;i++) bank[i].checked=0;} invclc();" value=1 > ジャネット 銀行拡張2 ( 2,000 Gold ) : </td><td><span style="color:red;">+ 1</span></td></tr>
+<tr><td><input type=checkbox name="bank" onclick="if(this.checked){bank[0].checked=bank[1].checked=1;}else{for(i=3;i<7;i++) bank[i].checked=0;} invclc();" value=1 > ジャネット 銀行拡張3 ( 4,000 Gold ) : </td><td><span style="color:red;">+ 1</span></td></tr>
+<tr><td><input type=checkbox name="bank" onclick="if(this.checked){for(i=0;i<3;i++) bank[i].checked=1;}else{for(i=4;i<7;i++) bank[i].checked=0;} invclc();" value=2 > ジャネット 銀行拡張4 ( 8,000 Gold ) : </td><td><span style="color:red;">+ 2</span></td></tr>
+<tr><td><input type=checkbox name="bank" onclick="if(this.checked){for(i=0;i<4;i++) bank[i].checked=1;}else{bank[5].checked=bank[6].checked=0;} invclc();" value=2 > ジャネット 銀行拡張5 ( 16,000 Gold ) : </td><td><span style="color:red;">+ 2</span></td></tr>
+<tr><td><input type=checkbox name="bank" onclick="if(this.checked){for(i=0;i<5;i++) bank[i].checked=1;}else{bank[6].checked=0;} invclc();" value=3 > ジャネット 銀行拡張6 ( 32,000 Gold ) : </td><td><span style="color:red;">+ 3</span></td></tr>
+<tr><td><input type=checkbox name="bank" onclick="if(this.checked) for(i=0;i<6;i++) bank[i].checked=1; invclc();" value=3 > ジャネット 銀行拡張7 ( 64,000 Gold ) : </td><td><span style="color:red;">+ 3</span></td></tr>
+<tr><td><input type=checkbox name="bank" onclick="charisma[2].checked = this.checked; invclc();" value=2 > キャット 銀行拡張1 ( ティアーズ ドロップ ) : </td><td><span style="color:red;">+ 2</span></td></tr>
+<tr><td><input type=checkbox name="bank" onclick="charisma[3].checked = this.checked; invclc();" value=2 > キャット 銀行拡張2 ( ビサイド ユア ハート ) : </td><td><span style="color:red;">+ 2</span></td></tr>
+<tr><td><input type=checkbox name="bank" onclick="charisma[7].checked = this.checked; invclc();" value=2 > ２つ星の願い ( 各種生産物 ) : </td><td><span style="color:red;">+ 2</span></td></tr>
+<tr><td><input type=checkbox name="bank" onclick="charisma[8].checked = this.checked; invclc();" value=3 > ３つ星の願い ( チップx9 ) : </td><td><span style="color:red;">+ 3</span></td></tr>
+<tr><td><input type=checkbox name="bank" onclick="charisma[9].checked = this.checked; invclc();" value=4 > ４つ星の願い ( チップx15 ) : </td><td><span style="color:red;">+ 4</span></td></tr>
+<tr><td><input type=checkbox name="bank" onclick="charisma[10].checked = this.checked; invclc();" value=4 > ガータンの銀行拡張 ( ナジャの爪 ) : </td><td><span style="color:red;">+ 4</span></td></tr>
+<tr><td><input type=checkbox name="bank" onclick="invclc();" value=3 > イルムの銀行拡張 ( キノコの化石 ) : </td><td><span style="color:red;">+ 3</span></td></tr>
+<tr><td><input type=checkbox name="bank" onclick="invclc();" value=1 > 旅商の安全確保 ( サベージ討伐 ) : </td><td><span style="color:red;">+ 1</span></td></tr>
+<tr><td><input type=checkbox name="bank" onclick="invclc();" value=1 > 王国復興 極秘任務 ( 各種生産物 ) : </td><td><span style="color:red;">+ 1</span></td></tr>
+<tr><td><input type=checkbox name="bank" onclick="invclc();" value=1 > 悪しき贅沢と正義の盗み ( 隠し金庫 ) : </td><td><span style="color:red;">+ 1</span></td></tr>
+<tr><td><input type=checkbox name="bank" onclick="invclc();" value=2 > 邪竜討伐 ( 千年竜 ) : </td><td><span style="color:red;">+ 2</span></td></tr>
+<tr><td><input type=checkbox name="bank" onclick="charisma[11].checked = this.checked; invclc();" value=2 > ？？？ ( ？？？ ) : </td><td><span style="color:red;">+ 2</span></td></tr>
+</table>
+
+</TD><TD WIDTH=300 VALIGN=top>
+
+<table width=300>
+<tr><td><b>所持枠拡張数：</b></td><td><input type="text" class="dsp" name="ipN" value="0" readonly></td></tr>
+<tr><td><input type=checkbox name="item" onclick="charisma[4].checked = this.checked; invclc();" value=2 > ２つ星の依頼 ( チップx2 ) : </td><td><span style="color:red;">+ 2</span></td></tr>
+<tr><td><input type=checkbox name="item" onclick="charisma[5].checked = this.checked; invclc();" value=3 > ３つ星の依頼 ( ワンダー クロース ) : </td><td><span style="color:red;">+ 3</span></td></tr>
+<tr><td><input type=checkbox name="item" onclick="charisma[6].checked = this.checked; invclc();" value=5 > ５つ星の依頼 ( アイリーンズ ベル ) : </td><td><span style="color:red;">+ 5</span></td></tr>
+</table>
+
+<br><br>
+
+<table width=300>
+<tr><td><b>カリスマポイント：</b></td><td><input type="text" class="dsp" name="cpN" value="0" readonly></td></tr>
+<tr><td><input type=checkbox name="charisma" onclick="invclc();" value=4 > 親子の絆 : </td><td><span style="color:red;">+ 4</span></td></tr>
+<tr><td><input type=checkbox name="charisma" onclick="invclc();" value=1 > 水と眠る、古の指輪 : </td><td><span style="color:red;">+ 1</span></td></tr>
+<tr><td><input type=checkbox name="charisma" onclick="bank[7].checked = this.checked; invclc();" value=3 > キャット 銀行拡張1 ( ティアーズ ドロップ ) : </td><td><span style="color:red;">+ 3</span></td></tr>
+<tr><td><input type=checkbox name="charisma" onclick="bank[8].checked = this.checked; invclc();" value=3 > キャット 銀行拡張2 ( ビサイド ユア ハート ) : </td><td><span style="color:red;">+ 3</span></td></tr>
+<tr><td><input type=checkbox name="charisma" onclick="item[0].checked = this.checked; invclc();" value=3 > ２つ星の依頼 ( チップx2 ) : </td><td><span style="color:red;">+ 3</span></td></tr>
+<tr><td><input type=checkbox name="charisma" onclick="item[1].checked = this.checked; invclc();" value=3 > ３つ星の依頼 ( ワンダー クロース ) : </td><td><span style="color:red;">+ 3</span></td></tr>
+<tr><td><input type=checkbox name="charisma" onclick="item[2].checked = this.checked; invclc();" value=3 > ５つ星の依頼 ( アイリーンズ ベル ) : </td><td><span style="color:red;">+ 3</span></td></tr>
+<tr><td><input type=checkbox name="charisma" onclick="bank[9].checked = this.checked; invclc();" value=3 > ２つ星の願い ( 各種生産物 ) : </td><td><span style="color:red;">+ 3</span></td></tr>
+<tr><td><input type=checkbox name="charisma" onclick="bank[10].checked = this.checked; invclc();" value=4 > ３つ星の願い ( チップx9 ) : </td><td><span style="color:red;">+ 4</span></td></tr>
+<tr><td><input type=checkbox name="charisma" onclick="bank[11].checked = this.checked; invclc();" value=5 > ４つ星の願い ( チップx15 ) : </td><td><span style="color:red;">+ 5</span></td></tr>
+<tr><td><input type=checkbox name="charisma" onclick="bank[12].checked = this.checked; invclc();" value=3 > ガータンの銀行拡張 ( ナジャの爪 ) : </td><td><span style="color:red;">+ 3</span></td></tr>
+<tr><td><input type=checkbox name="charisma" onclick="bank[18].checked = this.checked; invclc();" value=2 > ？？？ ( ？？？ ) : </td><td><span style="color:red;">+ 2</span></td></tr>
+</table>
+
+<br>
+
+<table width=300>
+<tr><td>
+<select name="slot">
+<option value="0" selected>slot 0 : no save
+<option value="1">slot 1 : no save
+<option value="2">slot 2 : no save
+<option value="3">slot 3 : no save
+<option value="4">slot 4 : no save
+<option value="5">slot 5 : no save
+<option value="6">slot 6 : no save
+<option value="7">slot 7 : no save
+<option value="8">slot 8 : no save
+<option value="9">slot 9 : no save
+<option value="10">slot 10 : no save
+<option value="11">slot 11 : no save
+<option value="12">slot 12 : no save
+<option value="13">slot 13 : no save
+<option value="14">slot 14 : no save
+<option value="15">slot 15 : no save
+</select>
+</td>
+<td><a class="fnc" href="JavaScript:saveCookiesub();">セーブ</a></td>
+<td><a class="fnc" href="JavaScript:loadsub();">ロード</a></td></tr>
+</table>
+<div align=right>wkclc ver1.00</div>
+
+</TD></TR>
+</TABLE>
+
+</form>
+
+<div id="option1" style="position:absolute; top:0px; left:0px; width:0px; height:0px; background-image:url(data/alpha.png);" onclick="JavaScript:offOptionLayer();"></div>
+<div id="option2" style="position:absolute; top:0px; left:0px; width:0px; height:0px;"></div>
+</body>
+</html>

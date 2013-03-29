@@ -1,0 +1,1087 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta name="robots" content="index,nofollow,noarchive">
+<meta name="keywords" content="MoE,スキルシミュレータ,スキルシュミレータ" />
+<meta name="description" content="「Master of Epic : The ResonanceAge Universe」 用キャラクタースキル模擬計算機。" />
+<title>もえかるく</title>
+<link rel=stylesheet href="data/moeclcie.css" id="csslink" type="text/css">
+<script language="JavaScript">
+	var ua = navigator.userAgent;
+	if(ua.match(" AppleWebKit/") && ua.match(" Mobile") && !(ua.match("iPad")) ){
+		tmpurl = location.href.replace(/moeclc4/,"moeclc4/m");
+		location.replace(tmpurl);
+	}
+// iphone対策
+	if(location.href.indexOf("&amp\;")>0){
+		tmpurl = location.href.replace(/&amp\;/,"&");
+		location.replace(tmpurl);
+	}
+</script>
+<script language="JavaScript" src="data/main.js"></script>
+<script language="JavaScript" src="data/tech.js"></script>
+<script language="JavaScript" src="data/ship.js"></script>
+</head>
+<body bgcolor=#ccccdd text="#000000" onload="init();">
+
+<form name="mcfrm" onsubmit="return false;">
+
+<!-- 左エリア開始。 -->
+
+<div style="position:absolute; top:10px; left:10px; width:300px;" onmousewheel="return false;">
+<table cellspacing=0 cellpadding=0 border=0 width=300>
+<tbody>
+
+<tr>
+<td colspan=3 class="cap">戦闘</td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl0"
+	onclick="prp('0',event.clientX,0)" oncontextmenu="prp('0',event.clientX,1); return false;" onmousewheel="prpw('0');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(0);" oncontextmenu="lockskill(0); return false;">筋力</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('0',-1,2)" oncontextmenu="prp('0',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('0',0,2)">
+<img src="data/ya1.png" onclick="prp('0',1,2)" oncontextmenu="prp('0',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl1"
+	onclick="prp('1',event.clientX,0)" oncontextmenu="prp('1',event.clientX,1); return false;" onmousewheel="prpw('1');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(1);" oncontextmenu="lockskill(1); return false;">着こなし</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('1',-1,2)" oncontextmenu="prp('1',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('1',0,2)">
+<img src="data/ya1.png" onclick="prp('1',1,2)" oncontextmenu="prp('1',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl2"
+	onclick="prp('2',event.clientX,0)" oncontextmenu="prp('2',event.clientX,1); return false;" onmousewheel="prpw('2');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(2);" oncontextmenu="lockskill(2); return false;">攻撃回避</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('2',-1,2)" oncontextmenu="prp('2',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('2',0,2)">
+<img src="data/ya1.png" onclick="prp('2',1,2)" oncontextmenu="prp('2',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl3"
+	onclick="prp('3',event.clientX,0)" oncontextmenu="prp('3',event.clientX,1); return false;" onmousewheel="prpw('3');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(3);" oncontextmenu="lockskill(3); return false;">生命力</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('3',-1,2)" oncontextmenu="prp('3',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('3',0,2)">
+<img src="data/ya1.png" onclick="prp('3',1,2)" oncontextmenu="prp('3',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl4"
+	onclick="prp('4',event.clientX,0)" oncontextmenu="prp('4',event.clientX,1); return false;" onmousewheel="prpw('4');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(4);" oncontextmenu="lockskill(4); return false;">知能</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('4',-1,2)" oncontextmenu="prp('4',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('4',0,2)">
+<img src="data/ya1.png" onclick="prp('4',1,2)" oncontextmenu="prp('4',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl5"
+	onclick="prp('5',event.clientX,0)" oncontextmenu="prp('5',event.clientX,1); return false;" onmousewheel="prpw('5');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(5);" oncontextmenu="lockskill(5); return false;">持久力</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('5',-1,2)" oncontextmenu="prp('5',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('5',0,2)">
+<img src="data/ya1.png" onclick="prp('5',1,2)" oncontextmenu="prp('5',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl6"
+	onclick="prp('6',event.clientX,0)" oncontextmenu="prp('6',event.clientX,1); return false;" onmousewheel="prpw('6');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(6);" oncontextmenu="lockskill(6); return false;">精神力</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('6',-1,2)" oncontextmenu="prp('6',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('6',0,2)">
+<img src="data/ya1.png" onclick="prp('6',1,2)" oncontextmenu="prp('6',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl7"
+	onclick="prp('7',event.clientX,0)" oncontextmenu="prp('7',event.clientX,1); return false;" onmousewheel="prpw('7');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(7);" oncontextmenu="lockskill(7); return false;">集中力</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('7',-1,2)" oncontextmenu="prp('7',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('7',0,2)">
+<img src="data/ya1.png" onclick="prp('7',1,2)" oncontextmenu="prp('7',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl8"
+	onclick="prp('8',event.clientX,0)" oncontextmenu="prp('8',event.clientX,1); return false;" onmousewheel="prpw('8');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(8);" oncontextmenu="lockskill(8); return false;">呪文抵抗力</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('8',-1,2)" oncontextmenu="prp('8',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('8',0,2)">
+<img src="data/ya1.png" onclick="prp('8',1,2)" oncontextmenu="prp('8',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td colspan=3 class="cap">基本</td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl9"
+	onclick="prp('9',event.clientX,0)" oncontextmenu="prp('9',event.clientX,1); return false;" onmousewheel="prpw('9');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(9);" oncontextmenu="lockskill(9); return false;">落下耐性</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('9',-1,2)" oncontextmenu="prp('9',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('9',0,2)">
+<img src="data/ya1.png" onclick="prp('9',1,2)" oncontextmenu="prp('9',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl10"
+	onclick="prp('10',event.clientX,0)" oncontextmenu="prp('10',event.clientX,1); return false;" onmousewheel="prpw('10');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(10);" oncontextmenu="lockskill(10); return false;">水泳</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('10',-1,2)" oncontextmenu="prp('10',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('10',0,2)">
+<img src="data/ya1.png" onclick="prp('10',1,2)" oncontextmenu="prp('10',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl11"
+	onclick="prp('11',event.clientX,0)" oncontextmenu="prp('11',event.clientX,1); return false;" onmousewheel="prpw('11');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(11);" oncontextmenu="lockskill(11); return false;">死体回収</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('11',-1,2)" oncontextmenu="prp('11',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('11',0,2)">
+<img src="data/ya1.png" onclick="prp('11',1,2)" oncontextmenu="prp('11',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl12"
+	onclick="prp('12',event.clientX,0)" oncontextmenu="prp('12',event.clientX,1); return false;" onmousewheel="prpw('12');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(12);" oncontextmenu="lockskill(12); return false;">包帯</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('12',-1,2)" oncontextmenu="prp('12',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('12',0,2)">
+<img src="data/ya1.png" onclick="prp('12',1,2)" oncontextmenu="prp('12',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl13"
+	onclick="prp('13',event.clientX,0)" oncontextmenu="prp('13',event.clientX,1); return false;" onmousewheel="prpw('13');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(13);" oncontextmenu="lockskill(13); return false;">自然回復</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('13',-1,2)" oncontextmenu="prp('13',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('13',0,2)">
+<img src="data/ya1.png" onclick="prp('13',1,2)" oncontextmenu="prp('13',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl14"
+	onclick="prp('14',event.clientX,0)" oncontextmenu="prp('14',event.clientX,1); return false;" onmousewheel="prpw('14');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(14);" oncontextmenu="lockskill(14); return false;">採掘</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('14',-1,2)" oncontextmenu="prp('14',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('14',0,2)">
+<img src="data/ya1.png" onclick="prp('14',1,2)" oncontextmenu="prp('14',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl15"
+	onclick="prp('15',event.clientX,0)" oncontextmenu="prp('15',event.clientX,1); return false;" onmousewheel="prpw('15');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(15);" oncontextmenu="lockskill(15); return false;">伐採</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('15',-1,2)" oncontextmenu="prp('15',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('15',0,2)">
+<img src="data/ya1.png" onclick="prp('15',1,2)" oncontextmenu="prp('15',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl16"
+	onclick="prp('16',event.clientX,0)" oncontextmenu="prp('16',event.clientX,1); return false;" onmousewheel="prpw('16');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(16);" oncontextmenu="lockskill(16); return false;">収穫</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('16',-1,2)" oncontextmenu="prp('16',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('16',0,2)">
+<img src="data/ya1.png" onclick="prp('16',1,2)" oncontextmenu="prp('16',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl17"
+	onclick="prp('17',event.clientX,0)" oncontextmenu="prp('17',event.clientX,1); return false;" onmousewheel="prpw('17');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(17);" oncontextmenu="lockskill(17); return false;">釣り</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('17',-1,2)" oncontextmenu="prp('17',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('17',0,2)">
+<img src="data/ya1.png" onclick="prp('17',1,2)" oncontextmenu="prp('17',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl18"
+	onclick="prp('18',event.clientX,0)" oncontextmenu="prp('18',event.clientX,1); return false;" onmousewheel="prpw('18');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(18);" oncontextmenu="lockskill(18); return false;">解読</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('18',-1,2)" oncontextmenu="prp('18',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('18',0,2)">
+<img src="data/ya1.png" onclick="prp('18',1,2)" oncontextmenu="prp('18',5,2); return false;">
+</nobr></td>
+</tr>
+
+
+<tr>
+<td colspan=3 class="cap">生産</td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl19"
+	onclick="prp('19',event.clientX,0)" oncontextmenu="prp('19',event.clientX,1); return false;" onmousewheel="prpw('19');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(19);" oncontextmenu="lockskill(19); return false;">料理</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('19',-1,2)" oncontextmenu="prp('19',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('19',0,2)">
+<img src="data/ya1.png" onclick="prp('19',1,2)" oncontextmenu="prp('19',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl20"
+	onclick="prp('20',event.clientX,0)" oncontextmenu="prp('20',event.clientX,1); return false;" onmousewheel="prpw('20');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(20);" oncontextmenu="lockskill(20); return false;">鍛冶</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('20',-1,2)" oncontextmenu="prp('20',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('20',0,2)">
+<img src="data/ya1.png" onclick="prp('20',1,2)" oncontextmenu="prp('20',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl21"
+	onclick="prp('21',event.clientX,0)" oncontextmenu="prp('21',event.clientX,1); return false;" onmousewheel="prpw('21');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(21);" oncontextmenu="lockskill(21); return false;">醸造</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('21',-1,2)" oncontextmenu="prp('21',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('21',0,2)">
+<img src="data/ya1.png" onclick="prp('21',1,2)" oncontextmenu="prp('21',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl22"
+	onclick="prp('22',event.clientX,0)" oncontextmenu="prp('22',event.clientX,1); return false;" onmousewheel="prpw('22');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(22);" oncontextmenu="lockskill(22); return false;">木工</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('22',-1,2)" oncontextmenu="prp('22',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('22',0,2)">
+<img src="data/ya1.png" onclick="prp('22',1,2)" oncontextmenu="prp('22',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl23"
+	onclick="prp('23',event.clientX,0)" oncontextmenu="prp('23',event.clientX,1); return false;" onmousewheel="prpw('23');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(23);" oncontextmenu="lockskill(23); return false;">裁縫</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('23',-1,2)" oncontextmenu="prp('23',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('23',0,2)">
+<img src="data/ya1.png" onclick="prp('23',1,2)" oncontextmenu="prp('23',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl24"
+	onclick="prp('24',event.clientX,0)" oncontextmenu="prp('24',event.clientX,1); return false;" onmousewheel="prpw('24');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(24);" oncontextmenu="lockskill(24); return false;">薬調合</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('24',-1,2)" oncontextmenu="prp('24',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('24',0,2)">
+<img src="data/ya1.png" onclick="prp('24',1,2)" oncontextmenu="prp('24',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl25"
+	onclick="prp('25',event.clientX,0)" oncontextmenu="prp('25',event.clientX,1); return false;" onmousewheel="prpw('25');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(25);" oncontextmenu="lockskill(25); return false;">装飾細工</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('25',-1,2)" oncontextmenu="prp('25',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('25',0,2)">
+<img src="data/ya1.png" onclick="prp('25',1,2)" oncontextmenu="prp('25',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl26"
+	onclick="prp('26',event.clientX,0)" oncontextmenu="prp('26',event.clientX,1); return false;" onmousewheel="prpw('26');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(26);" oncontextmenu="lockskill(26); return false;">複製</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('26',-1,2)" oncontextmenu="prp('26',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('26',0,2)">
+<img src="data/ya1.png" onclick="prp('26',1,2)" oncontextmenu="prp('26',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl27"
+	onclick="prp('27',event.clientX,0)" oncontextmenu="prp('27',event.clientX,1); return false;" onmousewheel="prpw('27');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(27);" oncontextmenu="lockskill(27); return false;">栽培</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('27',-1,2)" oncontextmenu="prp('27',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('27',0,2)">
+<img src="data/ya1.png" onclick="prp('27',1,2)" oncontextmenu="prp('27',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl28"
+	onclick="prp('28',event.clientX,0)" oncontextmenu="prp('28',event.clientX,1); return false;" onmousewheel="prpw('28');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(28);" oncontextmenu="lockskill(28); return false;">美容</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('28',-1,2)" oncontextmenu="prp('28',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('28',0,2)">
+<img src="data/ya1.png" onclick="prp('28',1,2)" oncontextmenu="prp('28',5,2); return false;">
+</nobr></td>
+</tr>
+
+</tbody></table>
+
+</div>
+
+<!-- 左エリア終わり。中央エリア開始。 -->
+
+<div style="position:absolute; top:10px; left:330px; width:300px;" onmousewheel="return false;">
+<table cellspacing=0 cellpadding=0 border=0 width=300>
+<tbody>
+
+<tr>
+<td colspan=3 class="cap">熟練</td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl29"
+	onclick="prp('29',event.clientX-320,0)" oncontextmenu="prp('29',event.clientX-320,1); return false;" onmousewheel="prpw('29');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(29);" oncontextmenu="lockskill(29); return false;">素手</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('29',-1,2)" oncontextmenu="prp('29',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('29',0,2)">
+<img src="data/ya1.png" onclick="prp('29',1,2)" oncontextmenu="prp('29',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl30"
+	onclick="prp('30',event.clientX-320,0)" oncontextmenu="prp('30',event.clientX-320,1); return false;" onmousewheel="prpw('30');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(30);" oncontextmenu="lockskill(30); return false;">刀剣</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('30',-1,2)" oncontextmenu="prp('30',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('30',0,2)">
+<img src="data/ya1.png" onclick="prp('30',1,2)" oncontextmenu="prp('30',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl31"
+	onclick="prp('31',event.clientX-320,0)" oncontextmenu="prp('31',event.clientX-320,1); return false;" onmousewheel="prpw('31');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(31);" oncontextmenu="lockskill(31); return false;">こんぼう</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('31',-1,2)" oncontextmenu="prp('31',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('31',0,2)">
+<img src="data/ya1.png" onclick="prp('31',1,2)" oncontextmenu="prp('31',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl32"
+	onclick="prp('32',event.clientX-320,0)" oncontextmenu="prp('32',event.clientX-320,1); return false;" onmousewheel="prpw('32');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(32);" oncontextmenu="lockskill(32); return false;">槍</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('32',-1,2)" oncontextmenu="prp('32',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('32',0,2)">
+<img src="data/ya1.png" onclick="prp('32',1,2)" oncontextmenu="prp('32',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl33"
+	onclick="prp('33',event.clientX-320,0)" oncontextmenu="prp('33',event.clientX-320,1); return false;" onmousewheel="prpw('33');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(33);" oncontextmenu="lockskill(33); return false;">銃器</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('33',-1,2)" oncontextmenu="prp('33',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('33',0,2)">
+<img src="data/ya1.png" onclick="prp('33',1,2)" oncontextmenu="prp('33',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl34"
+	onclick="prp('34',event.clientX-320,0)" oncontextmenu="prp('34',event.clientX-320,1); return false;" onmousewheel="prpw('34');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(34);" oncontextmenu="lockskill(34); return false;">弓</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('34',-1,2)" oncontextmenu="prp('34',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('34',0,2)">
+<img src="data/ya1.png" onclick="prp('34',1,2)" oncontextmenu="prp('34',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl35"
+	onclick="prp('35',event.clientX-320,0)" oncontextmenu="prp('35',event.clientX-320,1); return false;" onmousewheel="prpw('35');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(35);" oncontextmenu="lockskill(35); return false;">盾</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('35',-1,2)" oncontextmenu="prp('35',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('35',0,2)">
+<img src="data/ya1.png" onclick="prp('35',1,2)" oncontextmenu="prp('35',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl36"
+	onclick="prp('36',event.clientX-320,0)" oncontextmenu="prp('36',event.clientX-320,1); return false;" onmousewheel="prpw('36');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(36);" oncontextmenu="lockskill(36); return false;">投げ</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('36',-1,2)" oncontextmenu="prp('36',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('36',0,2)">
+<img src="data/ya1.png" onclick="prp('36',1,2)" oncontextmenu="prp('36',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl37"
+	onclick="prp('37',event.clientX-320,0)" oncontextmenu="prp('37',event.clientX-320,1); return false;" onmousewheel="prpw('37');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(37);" oncontextmenu="lockskill(37); return false;">牙</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('37',-1,2)" oncontextmenu="prp('37',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('37',0,2)">
+<img src="data/ya1.png" onclick="prp('37',1,2)" oncontextmenu="prp('37',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl38"
+	onclick="prp('38',event.clientX-320,0)" oncontextmenu="prp('38',event.clientX-320,1); return false;" onmousewheel="prpw('38');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(38);" oncontextmenu="lockskill(38); return false;">罠</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('38',-1,2)" oncontextmenu="prp('38',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('38',0,2)">
+<img src="data/ya1.png" onclick="prp('38',1,2)" oncontextmenu="prp('38',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl39"
+	onclick="prp('39',event.clientX-320,0)" oncontextmenu="prp('39',event.clientX-320,1); return false;" onmousewheel="prpw('39');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(39);" oncontextmenu="lockskill(39); return false;">キック</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('39',-1,2)" oncontextmenu="prp('39',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('39',0,2)">
+<img src="data/ya1.png" onclick="prp('39',1,2)" oncontextmenu="prp('39',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl40"
+	onclick="prp('40',event.clientX-320,0)" oncontextmenu="prp('40',event.clientX-320,1); return false;" onmousewheel="prpw('40');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(40);" oncontextmenu="lockskill(40); return false;">戦闘技術</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('40',-1,2)" oncontextmenu="prp('40',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('40',0,2)">
+<img src="data/ya1.png" onclick="prp('40',1,2)" oncontextmenu="prp('40',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl41"
+	onclick="prp('41',event.clientX-320,0)" oncontextmenu="prp('41',event.clientX-320,1); return false;" onmousewheel="prpw('41');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(41);" oncontextmenu="lockskill(41); return false;">酩酊</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('41',-1,2)" oncontextmenu="prp('41',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('41',0,2)">
+<img src="data/ya1.png" onclick="prp('41',1,2)" oncontextmenu="prp('41',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl42"
+	onclick="prp('42',event.clientX-320,0)" oncontextmenu="prp('42',event.clientX-320,1); return false;" onmousewheel="prpw('42');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(42);" oncontextmenu="lockskill(42); return false;">物まね</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('42',-1,2)" oncontextmenu="prp('42',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('42',0,2)">
+<img src="data/ya1.png" onclick="prp('42',1,2)" oncontextmenu="prp('42',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl43"
+	onclick="prp('43',event.clientX-320,0)" oncontextmenu="prp('43',event.clientX-320,1); return false;" onmousewheel="prpw('43');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(43);" oncontextmenu="lockskill(43); return false;">調教</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('43',-1,2)" oncontextmenu="prp('43',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('43',0,2)">
+<img src="data/ya1.png" onclick="prp('43',1,2)" oncontextmenu="prp('43',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl44"
+	onclick="prp('44',event.clientX-320,0)" oncontextmenu="prp('44',event.clientX-320,1); return false;" onmousewheel="prpw('44');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(44);" oncontextmenu="lockskill(44); return false;">破壊魔法</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('44',-1,2)" oncontextmenu="prp('44',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('44',0,2)">
+<img src="data/ya1.png" onclick="prp('44',1,2)" oncontextmenu="prp('44',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl45"
+	onclick="prp('45',event.clientX-320,0)" oncontextmenu="prp('45',event.clientX-320,1); return false;" onmousewheel="prpw('45');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(45);" oncontextmenu="lockskill(45); return false;">回復魔法</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('45',-1,2)" oncontextmenu="prp('45',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('45',0,2)">
+<img src="data/ya1.png" onclick="prp('45',1,2)" oncontextmenu="prp('45',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl46"
+	onclick="prp('46',event.clientX-320,0)" oncontextmenu="prp('46',event.clientX-320,1); return false;" onmousewheel="prpw('46');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(46);" oncontextmenu="lockskill(46); return false;">強化魔法</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('46',-1,2)" oncontextmenu="prp('46',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('46',0,2)">
+<img src="data/ya1.png" onclick="prp('46',1,2)" oncontextmenu="prp('46',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl47"
+	onclick="prp('47',event.clientX-320,0)" oncontextmenu="prp('47',event.clientX-320,1); return false;" onmousewheel="prpw('47');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(47);" oncontextmenu="lockskill(47); return false;">神秘魔法</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('47',-1,2)" oncontextmenu="prp('47',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('47',0,2)">
+<img src="data/ya1.png" onclick="prp('47',1,2)" oncontextmenu="prp('47',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl48"
+	onclick="prp('48',event.clientX-320,0)" oncontextmenu="prp('48',event.clientX-320,1); return false;" onmousewheel="prpw('48');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(48);" oncontextmenu="lockskill(48); return false;">召喚魔法</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('48',-1,2)" oncontextmenu="prp('48',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('48',0,2)">
+<img src="data/ya1.png" onclick="prp('48',1,2)" oncontextmenu="prp('48',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl49"
+	onclick="prp('49',event.clientX-320,0)" oncontextmenu="prp('49',event.clientX-320,1); return false;" onmousewheel="prpw('49');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(49);" oncontextmenu="lockskill(49); return false;">死の魔法</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('49',-1,2)" oncontextmenu="prp('49',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('49',0,2)">
+<img src="data/ya1.png" onclick="prp('49',1,2)" oncontextmenu="prp('49',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl50"
+	onclick="prp('50',event.clientX-320,0)" oncontextmenu="prp('50',event.clientX-320,1); return false;" onmousewheel="prpw('50');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(50);" oncontextmenu="lockskill(50); return false;">魔法熟練</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('50',-1,2)" oncontextmenu="prp('50',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('50',0,2)">
+<img src="data/ya1.png" onclick="prp('50',1,2)" oncontextmenu="prp('50',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl51"
+	onclick="prp('51',event.clientX-320,0)" oncontextmenu="prp('51',event.clientX-320,1); return false;" onmousewheel="prpw('51');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(51);" oncontextmenu="lockskill(51); return false;">自然調和</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('51',-1,2)" oncontextmenu="prp('51',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('51',0,2)">
+<img src="data/ya1.png" onclick="prp('51',1,2)" oncontextmenu="prp('51',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl52"
+	onclick="prp('52',event.clientX-320,0)" oncontextmenu="prp('52',event.clientX-320,1); return false;" onmousewheel="prpw('52');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(52);" oncontextmenu="lockskill(52); return false;">暗黒命令</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('52',-1,2)" oncontextmenu="prp('52',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('52',0,2)">
+<img src="data/ya1.png" onclick="prp('52',1,2)" oncontextmenu="prp('52',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl53"
+	onclick="prp('53',event.clientX-320,0)" oncontextmenu="prp('53',event.clientX-320,1); return false;" onmousewheel="prpw('53');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(53);" oncontextmenu="lockskill(53); return false;">取引</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('53',-1,2)" oncontextmenu="prp('53',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('53',0,2)">
+<img src="data/ya1.png" onclick="prp('53',1,2)" oncontextmenu="prp('53',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl54"
+	onclick="prp('54',event.clientX-320,0)" oncontextmenu="prp('54',event.clientX-320,1); return false;" onmousewheel="prpw('54');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(54);" oncontextmenu="lockskill(54); return false;">シャウト</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('54',-1,2)" oncontextmenu="prp('54',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('54',0,2)">
+<img src="data/ya1.png" onclick="prp('54',1,2)" oncontextmenu="prp('54',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl55"
+	onclick="prp('55',event.clientX-320,0)" oncontextmenu="prp('55',event.clientX-320,1); return false;" onmousewheel="prpw('55');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(55);" oncontextmenu="lockskill(55); return false;">音楽</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('55',-1,2)" oncontextmenu="prp('55',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('55',0,2)">
+<img src="data/ya1.png" onclick="prp('55',1,2)" oncontextmenu="prp('55',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl56"
+	onclick="prp('56',event.clientX-320,0)" oncontextmenu="prp('56',event.clientX-320,1); return false;" onmousewheel="prpw('56');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(56);" oncontextmenu="lockskill(56); return false;">盗み</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('56',-1,2)" oncontextmenu="prp('56',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('56',0,2)">
+<img src="data/ya1.png" onclick="prp('56',1,2)" oncontextmenu="prp('56',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl57"
+	onclick="prp('57',event.clientX-320,0)" oncontextmenu="prp('57',event.clientX-320,1); return false;" onmousewheel="prpw('57');"></div>
+</td>
+<td width=65>
+<div class="ttl2" onclick="setTech(57);" oncontextmenu="lockskill(57); return false;">ギャンブル</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('57',-1,2)" oncontextmenu="prp('57',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('57',0,2)">
+<img src="data/ya1.png" onclick="prp('57',1,2)" oncontextmenu="prp('57',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl58"
+	onclick="prp('58',event.clientX-320,0)" oncontextmenu="prp('58',event.clientX-320,1); return false;" onmousewheel="prpw('58');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(58);" oncontextmenu="lockskill(58); return false;">ﾊﾟﾌｫｰﾏﾝｽ</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('58',-1,2)" oncontextmenu="prp('58',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('58',0,2)">
+<img src="data/ya1.png" onclick="prp('58',1,2)" oncontextmenu="prp('58',5,2); return false;">
+</nobr></td>
+</tr>
+
+<tr>
+<td width=150>
+<div class="bar" id="skl59"
+	onclick="prp('59',event.clientX-320,0)" oncontextmenu="prp('59',event.clientX-320,1); return false;" onmousewheel="prpw('59');"></div>
+</td>
+<td width=65>
+<div class="ttl" onclick="setTech(59);" oncontextmenu="lockskill(59); return false;">ダンス</div>
+</td>
+<td width=85 align=right><nobr>
+<img src="data/ya0.png" onclick="prp('59',-1,2)" oncontextmenu="prp('59',-5,2); return false;">
+<input type="text" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('59',0,2)">
+<img src="data/ya1.png" onclick="prp('59',1,2)" oncontextmenu="prp('59',5,2); return false;">
+</nobr></td>
+</tr>
+
+</tbody></table>
+</div>
+
+<!-- 中央エリア終わり。右エリア開始。 -->
+
+<div style="position:absolute; top:10px; left:650px; width:300px;">
+
+<table cellpadding=0 cellspacing=0 border=0 width=300>
+<tbody>
+<tr>
+	<td colspan=4 width=300>
+		<input type="text" class="rslt" name="result" id="result" value="TOTAL : 0　　REST : 850" size=40 readonly>
+	</td>
+</tr>
+<tr><td colspan=4 width=300><hr size=0 color="#000000"></td></tr>
+<tr>
+	<td width=75>シップ名</td>
+	<td colspan=3 width=225>： <input type="text" name="sname" value="旅人" maxlength="20" size=28 readonly></td>
+</tr>
+<tr>
+	<td width=75>名前</td>
+	<td colspan=3 width=225>： <input type="text" name="cname" value="no name" maxlength="20" size=28></td>
+</tr>
+<tr>
+	<td width=75>種族</td>
+	<td colspan=3 width=225>： <select name="race_list" onchange="calcStatus()">
+		<option value="0">ニューター
+		<option value="1">コグニート
+		<option value="2">エルモニー
+		<option value="3">パンデモス
+		</select></td>
+</tr>
+<tr><td colspan=4 width=300><hr size=0 color="#000000"></td></tr>
+<tr>
+	<td width=75>ＨＰ</td><td nowrap width=75>： <input type="text" class="dsp" name="dsp_hp" value="0" size=8></td>
+	<td width=75>ＭＰ</td><td nowrap width=75>： <input type="text" class="dsp" name="dsp_mp" value="0" size=8></td>
+</tr><tr>
+	<td>スタミナ</td><td nowrap>： <input type="text" class="dsp" name="dsp_st" value="0" size=8></td>
+	<td>重量</td><td nowrap>： <input type="text" class="dsp" name="dsp_weight" value="0" size=8></td>
+</tr><tr>
+	<td>基本攻撃力</td><td nowrap>： <input type="text" class="dsp" name="dsp_atk" value="0" size=8></td>
+	<td>基本防御力</td><td nowrap>： <input type="text" class="dsp" name="dsp_ac" value="0" size=8></td>
+</tr><tr>
+	<td>回避</td><td nowrap>： <input type="text" class="dsp" name="dsp_flee" value="0" size=8></td>
+	<td>魔力</td><td nowrap>： <input type="text" class="dsp" name="dsp_magic" value="0" size=8></td>
+</tr><tr>
+	<td>呪文耐性</td><td nowrap>： <input type="text" class="dsp" name="dsp_mgcreg" value="0" size=8></td>
+	<td></td><td></td>
+</tr>
+<tr><td colspan=4 width=300><hr size=0 color="#000000"></td></tr>
+<tr>
+	<td colspan=4>
+	<div class="log" id="log">
+	<p>発動マスタリー</p>
+	</div>
+</td></tr>
+<tr><td colspan=4 width=300><hr size=0 color="#000000"></td></tr>
+<tr>
+	<td colspan=2><input type="submit" class="sbmt" value="ステータス計算" onclick="calcStatus();"></td>
+	<td colspan=2><a class="fnc" href="JavaScript:setMastery();">マスタリ一覧</a> (<a class="fnc" href="JavaScript:setShip();">シップ一覧</a>)</td>
+</tr>
+<tr>
+	<td colspan=2 width=150><input type="checkbox" class="chk" name="snap" accesskey="s" checked> スナップ機能 (Alt+S)</td>
+	<td colspan=2 width=150><input type="checkbox" class="chk" class="chk" name="cone" accesskey="r" checked> ステ計算連動 (Alt+R)</td>
+</tr>
+<tr>
+	<td colspan=4 width=300 title="小数第4位まで表示・計算"><input type="checkbox" class="chk" class="chk" name="premium" onclick="toPremium();"> 詳細表示 (プレミアムチケット)</td>
+</tr>
+<tr>
+	<td colspan=4 width=300 align=right>
+		<select name="slot">
+		<option value="0" selected>slot 0 : no save
+		<option value="1">slot 1 : no save
+		<option value="2">slot 2 : no save
+		<option value="3">slot 3 : no save
+		<option value="4">slot 4 : no save
+		<option value="5">slot 5 : no save
+		<option value="6">slot 6 : no save
+		<option value="7">slot 7 : no save
+		<option value="8">slot 8 : no save
+		<option value="9">slot 9 : no save
+		<option value="10">slot 10 : no save
+		<option value="11">slot 11 : no save
+		<option value="12">slot 12 : no save
+		<option value="13">slot 13 : no save
+		<option value="14">slot 14 : no save
+		<option value="15">slot 15 : no save
+		</select></td>
+</tr>
+<tr>
+	<td width=50><a class="fnc" href="JavaScript:saveCookie();">セーブ</a></td>
+	<td width=100><a class="fnc" href="JavaScript:addBookmark();">ブックマーク</a></td>
+	<td width=80><a class="fnc" href="JavaScript:loadCode('cookie');">ロード</a></td>
+	<td width=70><a class="fnc" href="JavaScript:resetData();">リセット</a></td>
+</tr>
+<tr>
+	<td colspan=2><a class="fnc" href="JavaScript:codeCopy(0);">URL出力</a></td>
+	<td colspan=2><a class="fnc" href="JavaScript:listCopy();">リスト出力</a></td>
+</tr>
+<tr>
+	<td colspan=2><a class="fnc" href="JavaScript:blendShip();">シップブレンド</a></td>
+	<td colspan=2><a class="fnc" href="waku.html" target="_blank">枠拡張計算</a></td>
+<!-- 	<td colspan=2><a class="fnc" nohref="JavaScript:cfmDelete();">セーブデータ消去</a></td> -->
+</tr>
+<tr>
+	<td colspan=2>&nbsp;<!-- <a class="fnc" href="./mini/" target="_blank">ミニサイズ</a> --></td>
+	<td colspan=2><a class="fnc" href="data/faq.html" target="_blank">FAQ</a></td>
+</tr>
+<tr><td colspan=4 width=300><hr size=0 color="#000000"></td></tr>
+<tr><td colspan=4 width=300 align=right><div style="cursor:help;" onclick="window.open('data/modify.html');">moeclc v4.44, Last modified 2013/03/23</div></td></tr>
+</tbody>
+</table>
+
+<input type="hidden" name="code" value="">
+<input type="hidden" name="list" value="">
+<input type="hidden" name="list2" value="">
+
+</div>
+
+</form>
+
+<div id="option1" style="position:absolute; top:0px; left:0px; width:0px; height:0px; background-image:url(data/alpha.png);" onclick="JavaScript:offOptionLayer();"></div>
+<div id="option2" style="position:absolute; top:0px; left:0px; width:0px; height:0px;"></div>
+
+</body>
+</html>

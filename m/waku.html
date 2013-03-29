@@ -1,0 +1,201 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta name="robots" content="index,follow">
+<meta name="viewport" content="width=320,initial-scale=1.0,user-scalable=no,maximum-scale=2.0" /> 
+<title>わくかるく</title>
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="data/iscroll.css" media="all" />
+<style>
+table{font-size:14px;}
+input.ck{height:20px; width:20px;}
+input.dsp{ime-mode: disabled; font-size:13px; width:240px;}
+</style>
+<script type="text/javascript" src="data/iscroll.js"></script>
+<script type="text/javascript" src="data/footer.js"></script>
+<script language="JavaScript1.1">
+// エラー処理してません。あしからず。
+var bp = new Array(13);
+var ip = new Array(13);
+var cp = new Array(13);
+var bsum = 12;
+var isum = 12;
+var csum = 0;
+for(i=0; i < 13; i++){
+	bp[i] = 0;
+	ip[i] = 0;
+	cp[i] = 0;
+}
+
+function invclc(){
+	for(i=0; i < 13; i++){
+		bsum += eval(bp[i]);
+		isum += eval(ip[i]);
+		csum += eval(cp[i]);
+	}
+
+document.questlist.bpN.value = " 現在 " + eval(bsum) + " / 拡張可能数 " + eval(45-bsum) + " / 最大 45";
+document.questlist.ipN.value = " 現在 " + eval(isum) + " / 拡張可能数 " + eval(22-isum) + " / 最大 22";
+document.questlist.cpN.value = " 現在 " + eval(csum) + " / 取得可能数 " + eval(35-csum) + " / 最大 35";
+
+bsum = 12;
+isum = 12;
+csum = 0;
+}
+</script>
+
+
+<body onload="invclc()" bgcolor="#ccccdd">
+
+<div id="content">
+<div id="content_inner">
+<div class="contentInner">
+
+<form name="questlist" onsubmit="invclc(); return false;">
+
+<table width=300 cellpadding=5>
+
+<th>
+ジャネット
+</th>
+<tr>
+	<td><input type="radio" name="q0" onclick="bp[0]=0; if(this.checked){bp[0]=0;} invclc();">未払い</td>
+	<td>-</td>
+</tr><tr>
+	<td><input type="radio" name="q0" onclick="bp[0]=0; if(this.checked){bp[0]=1;} invclc();">1,000G</td>
+	<td nowrap><span style="color:red;">銀行枠 +1</span></td>
+</tr><tr>
+	<td><input type="radio" name="q0" onclick="bp[0]=0; if(this.checked){bp[0]=2;} invclc();">2,000G</td>
+	<td nowrap><span style="color:red;">銀行枠 +1</span></td>
+</tr><tr>
+	<td><input type="radio" name="q0" onclick="bp[0]=0; if(this.checked){bp[0]=3;} invclc();">4,000G</td>
+	<td nowrap><span style="color:red;">銀行枠 +1</span></td>
+</tr><tr>
+	<td><input type="radio" name="q0" onclick="bp[0]=0; if(this.checked){bp[0]=5;} invclc();">8,000G</td>
+	<td nowrap><span style="color:red;">銀行枠 +2</span></td>
+</tr><tr>
+	<td><input type="radio" name="q0" onclick="bp[0]=0; if(this.checked){bp[0]=7;} invclc();">16,000G</td>
+	<td nowrap><span style="color:red;">銀行枠 +2</span></td>
+</tr><tr>
+	<td><input type="radio" name="q0" onclick="bp[0]=0; if(this.checked){bp[0]=10;} invclc();">32,000G</td>
+	<td nowrap><span style="color:red;">銀行枠 +3</span></td>
+</tr><tr>
+	<td><input type="radio" name="q0" onclick="bp[0]=0; if(this.checked){bp[0]=13;} invclc();">64,000G</td>
+	<td nowrap><span style="color:red;">銀行枠 +3</span></td>
+</tr>
+
+<tr><td colspan=2 height=30><hr size=1></td></tr>
+
+<th>
+キャット
+</th>
+<tr>
+	<td><input class="ck" type=checkbox name="q01" onclick="bp[1]=0; cp[1]=0; if(this.checked){bp[1]=2; cp[1]=3;} invclc();">ティアーズドロップ</td>
+	<td nowrap><span style="color:red;">銀行枠 +2</span> <span style="color:blue;">CP +3</span></td>
+</tr><tr>
+	<td><input class="ck" type=checkbox name="q02" onclick="bp[2]=0; cp[2]=0; if(this.checked){bp[2]=2; cp[2]=3;} invclc();">ビサイドユアハート</td>
+	<td nowrap><span style="color:red;">銀行枠 +2</span> <span style="color:blue;">CP +3</span></td>
+</tr>
+
+<tr><td colspan=2 height=30><hr size=1></td></tr>
+
+<th>バイソン</th>
+<tr><td>
+<input class="ck" type=checkbox name="q03" onclick="bp[3]=0; cp[3]=0; if(this.checked){bp[3]=2; cp[3]=3;} invclc();"><span title="次の内どれか
+【料理】 納豆巻きx5
+【醸造】 ドブロクx3
+【鍛冶】 ブロンズ カタナx4
+【木工】 セプターx4
+【裁縫】 ゾウのリュックサックx4
+【細工】 ゴールド リングx3
+【調合】 インヴィジブル ポーションx3">２つ星の願い</span><br>
+<input class="ck" type=checkbox name="q04" onclick="bp[4]=0; cp[4]=0; if(this.checked){bp[4]=3; cp[4]=4;} invclc();"><span title="チップx9">３つ星の願い</span><br>
+<input class="ck" type=checkbox name="q05" onclick="bp[5]=0; cp[5]=0; if(this.checked){bp[5]=4; cp[5]=5;} invclc();"><span title="チップx15">４つ星の願い</span>
+</td>
+<td style="line-height:20px;">
+<span style="color:red;">銀行枠 +2</span> <span style="color:blue;">CP +3</span><br>
+<span style="color:red;">銀行枠 +3</span> <span style="color:blue;">CP +4</span><br>
+<span style="color:red;">銀行枠 +4</span> <span style="color:blue;">CP +5</span>
+</td>
+</tr>
+
+<tr><td colspan=2 height=30><hr size=1></td></tr>
+
+<th>ガータン</th>
+<tr><td>
+<input class="ck" type=checkbox name="q06" onclick="bp[6]=0; cp[6]=0; if(this.checked){bp[6]=4; cp[6]=3;} invclc();">ナジャの爪
+</td>
+<td>
+<span style="color:red;">銀行枠 +4</span> <span style="color:blue;">CP +3</span>
+</td></tr>
+
+<tr><td colspan=2 height=30><hr size=1></td></tr>
+
+<th>イルム</th>
+<tr><td>
+<input class="ck" type=checkbox name="q07" onclick="bp[7]=0; if(this.checked){bp[7]=3;} invclc();">キノコの化石
+</td>
+<td>
+<span style="color:red;">銀行枠 +3</span>
+</td>
+</tr>
+
+</table>
+
+<table width=270>
+<th>エモネット</th>
+<tr><td>
+<input class="ck" type=checkbox name="q08" onclick="ip[8]=0; cp[8]=0; if(this.checked){ip[8]=2; cp[8]=3;} invclc();"><span title="チップx2">２つ星の依頼</span><br>
+<input class="ck" type=checkbox name="q09" onclick="ip[9]=0; cp[9]=0; if(this.checked){ip[9]=3; cp[9]=3;} invclc();"><span title="ワンダークロース">３つ星の依頼</span><br>
+<input class="ck" type=checkbox name="q10" onclick="ip[10]=0; cp[10]=0; if(this.checked){ip[10]=5; cp[10]=3;} invclc();"><span title="アイリーンズベル">５つ星の依頼</span>
+</td>
+<td style="line-height:20px;">
+<span style="color:darkgreen;">所持枠 +2</span> <span style="color:blue;">CP +3</span><br>
+<span style="color:darkgreen;">所持枠 +3</span> <span style="color:blue;">CP +3</span><br>
+<span style="color:darkgreen;">所持枠 +5</span> <span style="color:blue;">CP +3</span>
+</td>
+</tr>
+
+<tr><td colspan=2 height=30><hr size=1></td></tr>
+
+<th>リン＆ジョディ</th>
+<tr><td>
+<input class="ck" type=checkbox name="q11" onclick="cp[11]=0; if(this.checked){cp[11]=4;} invclc();"><span title="リンの手紙">親子の絆</span>
+</td>
+<td>
+<span style="color:blue;">CP +4</span>
+</td>
+</tr>
+
+<tr><td colspan=2 height=30><hr size=1></td></tr>
+
+<th>バロン＆クレア</th>
+<tr><td>
+<input class="ck" type=checkbox name="q12" onclick="cp[12]=0; if(this.checked){cp[12]=1;} invclc();"><span title="エルアンの指輪">水と眠る古の指輪</span>
+</td>
+<td>
+<span style="color:blue;">CP +1</span>
+</td>
+</tr>
+
+</table>
+
+
+</div>
+</div>
+</div>
+
+
+<div id="footer">
+<div class="footerInner">
+<table cellpadding=5>
+<tr><td nowrap width=50>銀行枠</td><td nowrap>: <input type="text" class="dsp" name="bpN" value="12" readonly></td></tr>
+<tr><td nowrap width=50>所持枠</td><td nowrap>: <input type="text" class="dsp" name="ipN" value="12" readonly></td></tr>
+<tr><td nowrap width=50>CP</td><td nowrap>: <input type="text" class="dsp" name="cpN" value="0" readonly></td></tr>
+</table>
+</form>
+</div>
+</div>
+
+
+</body>
+</html>

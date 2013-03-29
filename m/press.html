@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta name="Keywords" content="javascript,マウス,長押し,mousepress" />
+<meta name="Description" content="マウスの長押し(mousepress)でスクリプトを実行する" />
+<title>マウスの長押しでスクリプトを実行</title>
+<link rel="stylesheet" type="text/css" href="../default.css" />
+<style type="text/css">
+#message {
+    width: 240px;
+    background-color: #ffffff;
+    border: 2px solid #66aa00;
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+}
+</style>
+<script type="text/javascript" src="data/jquery.min.js"></script>
+<script type="text/javascript" src="data/mouse_action.js"></script>
+<script type="text/javascript">
+$(document).ready(init); 
+
+function init() {
+    // マウスのイベントを設定
+    $('.mouseaction').mousedown(MouseAction._down);
+    $('.mouseaction').mouseup(MouseAction._up);
+    $('.mouseaction').mouseover(MouseAction._over);
+    $('.mouseaction').mouseout(MouseAction._out);
+    $('.mouseaction').click(MouseAction._click);
+}
+
+// クリック時のアクションを上書き
+MouseAction.click = function() {
+    $('#message').html(MouseAction.e.id + ' がクリックされました');
+}
+
+// プレス時のアクションを上書き
+MouseAction.press = function() {
+    $('#message').html(MouseAction.e.id + ' が長押しされました');
+}
+</script>
+</head>
+<body>
+
+<div id="main_title"><h1>マウスの長押しでスクリプトを実行</h1></div>
+
+<div id="wrapper">
+<div id="main_frame">
+
+<h2>Mouse Press</h2>
+<p>
+下のリンクはクリックと長押しで別の動きをします。<br />
+例えば、ブックマークの一覧表示などで、クリックでページジャンプ、長押しでブックマーク編集を行う機能の割当に利用できます。
+</p>
+
+<span id="link1" class="mouseaction">長押し対応リンク１</span><br />
+<span id="link2" class="mouseaction">長押し対応リンク２</span><br />
+<span id="link3" class="mouseaction">長押し対応リンク３</span><br />
+
+<div id="message">メッセージ...</div>
+
+</div><!-- /main_frame -->
+</div><!-- /wrapper -->
+
+<!-- フッター -->
+<div id="footer"><a href="/">2009 Codess Apps</a></div>
+
+</body>
+</html>

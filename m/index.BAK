@@ -1,0 +1,669 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="keywords" content="MoE,スキルシミュレータ,スキルシュミレータ" />
+<meta name="description" content="「Master of Epic : The ResonanceAge Universe」 用キャラクタースキル模擬計算機。" />
+<meta name="viewport" content="width=320,initial-scale=1.0,user-scalable=no,maximum-scale=2.0" /> 
+<title>もえかるく for iphone/ipod</title>
+<link rel=stylesheet href="data/moeclcip.css" id="csslink" type="text/css">
+<script language="JavaScript" src="data/main.js"></script>
+</head>
+<body bgcolor=#ccccdd text="#000000" onload="init();">
+
+<form name="mcfrm" onsubmit="return false;">
+
+<!-- TAB -->
+<div class="cap" style="position:absolute; top:35px; left:10px; width:45px; z-index:4;"
+	onclick="area2.style.zIndex=2; area3.style.zIndex=2; area4.style.zIndex=2; area5.style.zIndex=2; area6.style.zIndex=2; area1.style.zIndex=4;"><b>戦闘</b></div>
+
+<div class="cap" style="position:absolute; top:35px; left:214px; width:45px; z-index:4;"
+	onclick="area1.style.zIndex=2; area3.style.zIndex=2; area4.style.zIndex=2; area5.style.zIndex=2; area6.style.zIndex=2; area2.style.zIndex=4;"><b>基本</b></div>
+
+<div class="cap" style="position:absolute; top:35px; left:265px; width:45px; z-index:4;"
+	onclick="area1.style.zIndex=2; area2.style.zIndex=2; area4.style.zIndex=2; area5.style.zIndex=2; area6.style.zIndex=2; area3.style.zIndex=4;"><b>生産</b></div>
+
+<div class="cap" style="position:absolute; top:35px; left:61px; width:45px; z-index:4;"
+	onclick="area1.style.zIndex=2; area2.style.zIndex=2; area3.style.zIndex=2; area5.style.zIndex=2; area6.style.zIndex=2; area4.style.zIndex=4;"><b>熟練1</b></div>
+
+<div class="cap" style="position:absolute; top:35px; left:112px; width:45px; z-index:4;"
+	onclick="area1.style.zIndex=2; area2.style.zIndex=2; area3.style.zIndex=2; area4.style.zIndex=2; area6.style.zIndex=2; area5.style.zIndex=4;"><b>熟練2</b></div>
+
+<div class="cap" style="position:absolute; top:35px; left:163px; width:45px; z-index:4;"
+	onclick="area1.style.zIndex=2; area2.style.zIndex=2; area3.style.zIndex=2; area4.style.zIndex=2; area5.style.zIndex=2; area6.style.zIndex=4;"><b>熟練3</b></div>
+
+
+<!-- 戦闘 -->
+<div id="area1" style="position:absolute; top:65px; left:10px; width:300px; z-index:4;">
+
+<div class="bar" id="skl0" style="position:absolute; top:2px;"
+	onclick="prp('0',event.offsetX,0)" oncontextmenu="prp('0',event.offsetX,1); return false;" onmousewheel="prpw('0');" onTouchStart="ls(0);"></div>
+<div class="ttl2" style="position:absolute; top:3px; left:160px;"
+	onclick="setTech(0);" oncontextmenu="lockskill(0); return false;">筋力</div>
+<div class="ttl2" style="position:absolute; top:0px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('0',0,2);">
+</div>
+
+<div class="bar" id="skl1" style="position:absolute; top:37px;"
+	onclick="prp('1',event.offsetX,0)" oncontextmenu="prp('1',event.offsetX,1); return false;" onmousewheel="prpw('1');" onTouchStart="ls(1);"></div>
+<div class="ttl2" style="position:absolute; top:38px; left:160px;"
+	onclick="setTech(1);" oncontextmenu="lockskill(1); return false;">着こなし</div>
+<div class="ttl2" style="position:absolute; top:35px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('1',0,2);">
+</div>
+
+<div class="bar" id="skl2" style="position:absolute; top:72px;"
+	onclick="prp('2',event.offsetX,0)" oncontextmenu="prp('2',event.offsetX,1); return false;" onmousewheel="prpw('2');" onTouchStart="ls(2);"></div>
+<div class="ttl2" style="position:absolute; top:73px; left:160px;"
+	onclick="setTech(2);" oncontextmenu="lockskill(2); return false;">攻撃回避</div>
+<div class="ttl2" style="position:absolute; top:70px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('2',0,2);">
+</div>
+
+<div class="bar" id="skl3" style="position:absolute; top:107px;"
+	onclick="prp('3',event.offsetX,0)" oncontextmenu="prp('3',event.offsetX,1); return false;" onmousewheel="prpw('3');" onTouchStart="ls(3);"></div>
+<div class="ttl2" style="position:absolute; top:108px; left:160px;"
+	onclick="setTech(3);" oncontextmenu="lockskill(3); return false;">生命力</div>
+<div class="ttl2" style="position:absolute; top:105px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('3',0,2);">
+</div>
+
+<div class="bar" id="skl4" style="position:absolute; top:142px;"
+	onclick="prp('4',event.offsetX,0)" oncontextmenu="prp('4',event.offsetX,1); return false;" onmousewheel="prpw('4');" onTouchStart="ls(4);"></div>
+<div class="ttl2" style="position:absolute; top:143px; left:160px;"
+	onclick="setTech(4);" oncontextmenu="lockskill(4); return false;">知能</div>
+<div class="ttl2" style="position:absolute; top:140px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('4',0,2);">
+</div>
+
+<div class="bar" id="skl5" style="position:absolute; top:177px;"
+	onclick="prp('5',event.offsetX,0)" oncontextmenu="prp('5',event.offsetX,1); return false;" onmousewheel="prpw('5');" onTouchStart="ls(5);"></div>
+<div class="ttl2" style="position:absolute; top:178px; left:160px;"
+	onclick="setTech(5);" oncontextmenu="lockskill(5); return false;">持久力</div>
+<div class="ttl2" style="position:absolute; top:175px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('5',0,2);">
+</div>
+
+<div class="bar" id="skl6" style="position:absolute; top:212px;"
+	onclick="prp('6',event.offsetX,0)" oncontextmenu="prp('6',event.offsetX,1); return false;" onmousewheel="prpw('6');" onTouchStart="ls(6);"></div>
+<div class="ttl2" style="position:absolute; top:213px; left:160px;"
+	onclick="setTech(6);" oncontextmenu="lockskill(6); return false;">精神力</div>
+<div class="ttl2" style="position:absolute; top:210px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('6',0,2);">
+</div>
+
+<div class="bar" id="skl7" style="position:absolute; top:247px;"
+	onclick="prp('7',event.offsetX,0)" oncontextmenu="prp('7',event.offsetX,1); return false;" onmousewheel="prpw('7');" onTouchStart="ls(7);"></div>
+<div class="ttl2" style="position:absolute; top:248px; left:160px;"
+	onclick="setTech(7);" oncontextmenu="lockskill(7); return false;">集中力</div>
+<div class="ttl2" style="position:absolute; top:245px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('7',0,2);">
+</div>
+
+<div class="bar" id="skl8" style="position:absolute; top:282px;"
+	onclick="prp('8',event.offsetX,0)" oncontextmenu="prp('8',event.offsetX,1); return false;" onmousewheel="prpw('8');" onTouchStart="ls(8);"></div>
+<div class="ttl2" style="position:absolute; top:283px; left:160px;"
+	onclick="setTech(8);" oncontextmenu="lockskill(8); return false;">呪文抵抗</div>
+<div class="ttl2" style="position:absolute; top:280px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('8',0,2);">
+</div>
+
+</div>
+
+
+<!-- 基本 -->
+<div id="area2" style="position:absolute; top:65px; left:10px; width:300px; z-index:2;">
+
+<div class="bar" id="skl9" style="position:absolute; top:2px;"
+	onclick="prp('9',event.offsetX,0)" oncontextmenu="prp('9',event.offsetX,1); return false;" onmousewheel="prpw('9');" onTouchStart="ls(9);"></div>
+<div class="ttl2" style="position:absolute; top:3px; left:160px;"
+	onclick="setTech(9);" oncontextmenu="lockskill(9); return false;">落下耐性</div>
+<div class="ttl2" style="position:absolute; top:0px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('9',0,2);">
+</div>
+
+<div class="bar" id="skl10" style="position:absolute; top:33px;"
+	onclick="prp('10',event.offsetX,0)" oncontextmenu="prp('10',event.offsetX,1); return false;" onmousewheel="prpw('10');" onTouchStart="ls(10);"></div>
+<div class="ttl2" style="position:absolute; top:34px; left:160px;"
+	onclick="setTech(10);" oncontextmenu="lockskill(10); return false;">水泳</div>
+<div class="ttl2" style="position:absolute; top:31px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('10',0,2);">
+</div>
+
+<div class="bar" id="skl11" style="position:absolute; top:64px;"
+	onclick="prp('11',event.offsetX,0)" oncontextmenu="prp('11',event.offsetX,1); return false;" onmousewheel="prpw('11');" onTouchStart="ls(11);"></div>
+<div class="ttl2" style="position:absolute; top:65px; left:160px;"
+	onclick="setTech(11);" oncontextmenu="lockskill(11); return false;">死体回収</div>
+<div class="ttl2" style="position:absolute; top:62px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('11',0,2);">
+</div>
+
+<div class="bar" id="skl12" style="position:absolute; top:95px;"
+	onclick="prp('12',event.offsetX,0)" oncontextmenu="prp('12',event.offsetX,1); return false;" onmousewheel="prpw('12');" onTouchStart="ls(12);"></div>
+<div class="ttl2" style="position:absolute; top:96px; left:160px;"
+	onclick="setTech(12);" oncontextmenu="lockskill(12); return false;">包帯</div>
+<div class="ttl2" style="position:absolute; top:93px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('12',0,2);">
+</div>
+
+<div class="bar" id="skl13" style="position:absolute; top:126px;"
+	onclick="prp('13',event.offsetX,0)" oncontextmenu="prp('13',event.offsetX,1); return false;" onmousewheel="prpw('13');" onTouchStart="ls(13);"></div>
+<div class="ttl2" style="position:absolute; top:127px; left:160px;"
+	onclick="setTech(13);" oncontextmenu="lockskill(13); return false;">自然回復</div>
+<div class="ttl2" style="position:absolute; top:124px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('13',0,2);">
+</div>
+
+<div class="bar" id="skl14" style="position:absolute; top:158px;"
+	onclick="prp('14',event.offsetX,0)" oncontextmenu="prp('14',event.offsetX,1); return false;" onmousewheel="prpw('14');" onTouchStart="ls(14);"></div>
+<div class="ttl2" style="position:absolute; top:159px; left:160px;"
+	onclick="setTech(14);" oncontextmenu="lockskill(14); return false;">採掘</div>
+<div class="ttl2" style="position:absolute; top:156px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('14',0,2);">
+</div>
+
+<div class="bar" id="skl15" style="position:absolute; top:189px;"
+	onclick="prp('15',event.offsetX,0)" oncontextmenu="prp('15',event.offsetX,1); return false;" onmousewheel="prpw('15');" onTouchStart="ls(15);"></div>
+<div class="ttl2" style="position:absolute; top:190px; left:160px;"
+	onclick="setTech(15);" oncontextmenu="lockskill(15); return false;">伐採</div>
+<div class="ttl2" style="position:absolute; top:187px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('15',0,2);">
+</div>
+
+<div class="bar" id="skl16" style="position:absolute; top:220px;"
+	onclick="prp('16',event.offsetX,0)" oncontextmenu="prp('16',event.offsetX,1); return false;" onmousewheel="prpw('16');" onTouchStart="ls(16);"></div>
+<div class="ttl2" style="position:absolute; top:221px; left:160px;"
+	onclick="setTech(16);" oncontextmenu="lockskill(16); return false;">収穫</div>
+<div class="ttl2" style="position:absolute; top:218px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('16',0,2);">
+</div>
+
+<div class="bar" id="skl17" style="position:absolute; top:250px;"
+	onclick="prp('17',event.offsetX,0)" oncontextmenu="prp('17',event.offsetX,1); return false;" onmousewheel="prpw('17');" onTouchStart="ls(17);"></div>
+<div class="ttl2" style="position:absolute; top:251px; left:160px;"
+	onclick="setTech(17);" oncontextmenu="lockskill(17); return false;">釣り</div>
+<div class="ttl2" style="position:absolute; top:248px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('17',0,2);">
+</div>
+
+<div class="bar" id="skl18" style="position:absolute; top:282px;"
+	onclick="prp('18',event.offsetX,0)" oncontextmenu="prp('18',event.offsetX,1); return false;" onmousewheel="prpw('18');" onTouchStart="ls(18);"></div>
+<div class="ttl2" style="position:absolute; top:283px; left:160px;"
+	onclick="setTech(18);" oncontextmenu="lockskill(18); return false;">解読</div>
+<div class="ttl2" style="position:absolute; top:280px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('18',0,2);">
+</div>
+
+</div>
+
+
+<!-- 生産 -->
+<div id="area3" style="position:absolute; top:65px; left:10px; width:300px; z-index:2;">
+
+<div class="bar" id="skl19" style="position:absolute; top:2px;"
+	onclick="prp('19',event.offsetX,0)" oncontextmenu="prp('19',event.offsetX,1); return false;" onmousewheel="prpw('19');" onTouchStart="ls(19);"></div>
+<div class="ttl2" style="position:absolute; top:3px; left:160px;"
+	onclick="setTech(19);" oncontextmenu="lockskill(19); return false;">料理</div>
+<div class="ttl2" style="position:absolute; top:0px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('19',0,2);">
+</div>
+
+<div class="bar" id="skl20" style="position:absolute; top:33px;"
+	onclick="prp('20',event.offsetX,0)" oncontextmenu="prp('20',event.offsetX,1); return false;" onmousewheel="prpw('20');" onTouchStart="ls(20);"></div>
+<div class="ttl2" style="position:absolute; top:34px; left:160px;"
+	onclick="setTech(20);" oncontextmenu="lockskill(20); return false;">鍛冶</div>
+<div class="ttl2" style="position:absolute; top:31px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('20',0,2);">
+</div>
+
+<div class="bar" id="skl21" style="position:absolute; top:64px;"
+	onclick="prp('21',event.offsetX,0)" oncontextmenu="prp('21',event.offsetX,1); return false;" onmousewheel="prpw('21');" onTouchStart="ls(21);"></div>
+<div class="ttl2" style="position:absolute; top:65px; left:160px;"
+	onclick="setTech(21);" oncontextmenu="lockskill(21); return false;">醸造</div>
+<div class="ttl2" style="position:absolute; top:62px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('21',0,2);">
+</div>
+
+<div class="bar" id="skl22" style="position:absolute; top:95px;"
+	onclick="prp('22',event.offsetX,0)" oncontextmenu="prp('22',event.offsetX,1); return false;" onmousewheel="prpw('22');" onTouchStart="ls(22);"></div>
+<div class="ttl2" style="position:absolute; top:96px; left:160px;"
+	onclick="setTech(22);" oncontextmenu="lockskill(22); return false;">木工</div>
+<div class="ttl2" style="position:absolute; top:93px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('22',0,2);">
+</div>
+
+<div class="bar" id="skl23" style="position:absolute; top:126px;"
+	onclick="prp('23',event.offsetX,0)" oncontextmenu="prp('23',event.offsetX,1); return false;" onmousewheel="prpw('23');" onTouchStart="ls(23);"></div>
+<div class="ttl2" style="position:absolute; top:127px; left:160px;"
+	onclick="setTech(23);" oncontextmenu="lockskill(23); return false;">裁縫</div>
+<div class="ttl2" style="position:absolute; top:124px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('23',0,2);">
+</div>
+
+<div class="bar" id="skl24" style="position:absolute; top:158px;"
+	onclick="prp('24',event.offsetX,0)" oncontextmenu="prp('24',event.offsetX,1); return false;" onmousewheel="prpw('24');" onTouchStart="ls(24);"></div>
+<div class="ttl2" style="position:absolute; top:159px; left:160px;"
+	onclick="setTech(24);" oncontextmenu="lockskill(24); return false;">薬調合</div>
+<div class="ttl2" style="position:absolute; top:156px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('24',0,2);">
+</div>
+
+<div class="bar" id="skl25" style="position:absolute; top:189px;"
+	onclick="prp('25',event.offsetX,0)" oncontextmenu="prp('25',event.offsetX,1); return false;" onmousewheel="prpw('25');" onTouchStart="ls(25);"></div>
+<div class="ttl2" style="position:absolute; top:190px; left:160px;"
+	onclick="setTech(25);" oncontextmenu="lockskill(25); return false;">装飾細工</div>
+<div class="ttl2" style="position:absolute; top:187px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('25',0,2);">
+</div>
+
+<div class="bar" id="skl26" style="position:absolute; top:220px;"
+	onclick="prp('26',event.offsetX,0)" oncontextmenu="prp('26',event.offsetX,1); return false;" onmousewheel="prpw('26');" onTouchStart="ls(26);"></div>
+<div class="ttl2" style="position:absolute; top:221px; left:160px;"
+	onclick="setTech(26);" oncontextmenu="lockskill(26); return false;">複製</div>
+<div class="ttl2" style="position:absolute; top:218px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('26',0,2);">
+</div>
+
+<div class="bar" id="skl27" style="position:absolute; top:250px;"
+	onclick="prp('27',event.offsetX,0)" oncontextmenu="prp('27',event.offsetX,1); return false;" onmousewheel="prpw('27');" onTouchStart="ls(27);"></div>
+<div class="ttl2" style="position:absolute; top:251px; left:160px;"
+	onclick="setTech(27);" oncontextmenu="lockskill(27); return false;">栽培</div>
+<div class="ttl2" style="position:absolute; top:248px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('27',0,2);">
+</div>
+
+<div class="bar" id="skl28" style="position:absolute; top:282px;"
+	onclick="prp('28',event.offsetX,0)" oncontextmenu="prp('28',event.offsetX,1); return false;" onmousewheel="prpw('28');" onTouchStart="ls(28);"></div>
+<div class="ttl2" style="position:absolute; top:283px; left:160px;"
+	onclick="setTech(28);" oncontextmenu="lockskill(28); return false;">美容</div>
+<div class="ttl2" style="position:absolute; top:280px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('28',0,2);">
+</div>
+
+</div>
+
+
+<!-- 熟練１ -->
+<div id="area4" style="position:absolute; top:65px; left:10px; width:300px; z-index:2;">
+
+<div class="bar" id="skl29" style="position:absolute; top:2px;"
+	onclick="prp('29',event.offsetX,0)" oncontextmenu="prp('29',event.offsetX,1); return false;" onmousewheel="prpw('29');" onTouchStart="ls(29);"></div>
+<div class="ttl2" style="position:absolute; top:3px; left:160px;"
+	onclick="setTech(29);" oncontextmenu="lockskill(29); return false;">素手</div>
+<div class="ttl2" style="position:absolute; top:0px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('29',0,2);">
+</div>
+
+<div class="bar" id="skl30" style="position:absolute; top:30px;"
+	onclick="prp('30',event.offsetX,0)" oncontextmenu="prp('30',event.offsetX,1); return false;" onmousewheel="prpw('30');" onTouchStart="ls(30);"></div>
+<div class="ttl2" style="position:absolute; top:31px; left:160px;"
+	onclick="setTech(30);" oncontextmenu="lockskill(30); return false;">刀剣</div>
+<div class="ttl2" style="position:absolute; top:28px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('30',0,2);">
+</div>
+
+<div class="bar" id="skl31" style="position:absolute; top:58px;"
+	onclick="prp('31',event.offsetX,0)" oncontextmenu="prp('31',event.offsetX,1); return false;" onmousewheel="prpw('31');" onTouchStart="ls(31);"></div>
+<div class="ttl2" style="position:absolute; top:59px; left:160px;"
+	onclick="setTech(31);" oncontextmenu="lockskill(31); return false;">こんぼう</div>
+<div class="ttl2" style="position:absolute; top:56px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('31',0,2);">
+</div>
+
+<div class="bar" id="skl32" style="position:absolute; top:86px;"
+	onclick="prp('32',event.offsetX,0)" oncontextmenu="prp('32',event.offsetX,1); return false;" onmousewheel="prpw('32');" onTouchStart="ls(32);"></div>
+<div class="ttl2" style="position:absolute; top:87px; left:160px;"
+	onclick="setTech(32);" oncontextmenu="lockskill(32); return false;">槍</div>
+<div class="ttl2" style="position:absolute; top:84px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('32',0,2);">
+</div>
+
+<div class="bar" id="skl33" style="position:absolute; top:114px;"
+	onclick="prp('33',event.offsetX,0)" oncontextmenu="prp('33',event.offsetX,1); return false;" onmousewheel="prpw('33');" onTouchStart="ls(33);"></div>
+<div class="ttl2" style="position:absolute; top:115px; left:160px;"
+	onclick="setTech(33);" oncontextmenu="lockskill(33); return false;">銃器</div>
+<div class="ttl2" style="position:absolute; top:112px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('33',0,2);">
+</div>
+
+<div class="bar" id="skl34" style="position:absolute; top:142px;"
+	onclick="prp('34',event.offsetX,0)" oncontextmenu="prp('34',event.offsetX,1); return false;" onmousewheel="prpw('34');" onTouchStart="ls(34);"></div>
+<div class="ttl2" style="position:absolute; top:143px; left:160px;"
+	onclick="setTech(34);" oncontextmenu="lockskill(34); return false;">弓</div>
+<div class="ttl2" style="position:absolute; top:140px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('34',0,2);">
+</div>
+
+<div class="bar" id="skl35" style="position:absolute; top:170px;"
+	onclick="prp('35',event.offsetX,0)" oncontextmenu="prp('35',event.offsetX,1); return false;" onmousewheel="prpw('35');" onTouchStart="ls(35);"></div>
+<div class="ttl2" style="position:absolute; top:171px; left:160px;"
+	onclick="setTech(35);" oncontextmenu="lockskill(35); return false;">盾</div>
+<div class="ttl2" style="position:absolute; top:168px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('35',0,2);">
+</div>
+
+<div class="bar" id="skl36" style="position:absolute; top:198px;"
+	onclick="prp('36',event.offsetX,0)" oncontextmenu="prp('36',event.offsetX,1); return false;" onmousewheel="prpw('36');" onTouchStart="ls(36);"></div>
+<div class="ttl2" style="position:absolute; top:199px; left:160px;"
+	onclick="setTech(36);" oncontextmenu="lockskill(36); return false;">投げ</div>
+<div class="ttl2" style="position:absolute; top:196px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('36',0,2);">
+</div>
+
+<div class="bar" id="skl37" style="position:absolute; top:226px;"
+	onclick="prp('37',event.offsetX,0)" oncontextmenu="prp('37',event.offsetX,1); return false;" onmousewheel="prpw('37');" onTouchStart="ls(37);"></div>
+<div class="ttl2" style="position:absolute; top:227px; left:160px;"
+	onclick="setTech(37);" oncontextmenu="lockskill(37); return false;">牙</div>
+<div class="ttl2" style="position:absolute; top:224px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('37',0,2);">
+</div>
+
+<div class="bar" id="skl38" style="position:absolute; top:254px;"
+	onclick="prp('38',event.offsetX,0)" oncontextmenu="prp('38',event.offsetX,1); return false;" onmousewheel="prpw('38');" onTouchStart="ls(38);"></div>
+<div class="ttl2" style="position:absolute; top:255px; left:160px;"
+	onclick="setTech(38);" oncontextmenu="lockskill(38); return false;">罠</div>
+<div class="ttl2" style="position:absolute; top:252px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('38',0,2);">
+</div>
+
+<div class="bar" id="skl39" style="position:absolute; top:282px;"
+	onclick="prp('39',event.offsetX,0)" oncontextmenu="prp('39',event.offsetX,1); return false;" onmousewheel="prpw('39');" onTouchStart="ls(39);"></div>
+<div class="ttl2" style="position:absolute; top:283px; left:160px;"
+	onclick="setTech(39);" oncontextmenu="lockskill(39); return false;">キック</div>
+<div class="ttl2" style="position:absolute; top:280px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('39',0,2);">
+</div>
+
+</div>
+
+
+<!-- 熟練２ -->
+<div id="area5" style="position:absolute; top:65px; left:10px; width:300px; z-index:2;">
+
+<div class="bar" id="skl40" style="position:absolute; top:2px;"
+	onclick="prp('40',event.offsetX,0)" oncontextmenu="prp('40',event.offsetX,1); return false;" onmousewheel="prpw('40');" onTouchStart="ls(40);"></div>
+<div class="ttl2" style="position:absolute; top:3px; left:160px;"
+	onclick="setTech(40);" oncontextmenu="lockskill(40); return false;">戦闘技術</div>
+<div class="ttl2" style="position:absolute; top:0px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('40',0,2);">
+</div>
+
+<div class="bar" id="skl41" style="position:absolute; top:30px;"
+	onclick="prp('41',event.offsetX,0)" oncontextmenu="prp('41',event.offsetX,1); return false;" onmousewheel="prpw('41');" onTouchStart="ls(41);"></div>
+<div class="ttl2" style="position:absolute; top:31px; left:160px;"
+	onclick="setTech(41);" oncontextmenu="lockskill(41); return false;">酩酊</div>
+<div class="ttl2" style="position:absolute; top:28px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('41',0,2);">
+</div>
+
+<div class="bar" id="skl42" style="position:absolute; top:58px;"
+	onclick="prp('42',event.offsetX,0)" oncontextmenu="prp('42',event.offsetX,1); return false;" onmousewheel="prpw('42');" onTouchStart="ls(42);"></div>
+<div class="ttl2" style="position:absolute; top:59px; left:160px;"
+	onclick="setTech(42);" oncontextmenu="lockskill(42); return false;">物まね</div>
+<div class="ttl2" style="position:absolute; top:56px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('42',0,2);">
+</div>
+
+<div class="bar" id="skl43" style="position:absolute; top:86px;"
+	onclick="prp('43',event.offsetX,0)" oncontextmenu="prp('43',event.offsetX,1); return false;" onmousewheel="prpw('43');" onTouchStart="ls(43);"></div>
+<div class="ttl2" style="position:absolute; top:87px; left:160px;"
+	onclick="setTech(43);" oncontextmenu="lockskill(43); return false;">調教</div>
+<div class="ttl2" style="position:absolute; top:84px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('43',0,2);">
+</div>
+
+<div class="bar" id="skl44" style="position:absolute; top:114px;"
+	onclick="prp('44',event.offsetX,0)" oncontextmenu="prp('44',event.offsetX,1); return false;" onmousewheel="prpw('44');" onTouchStart="ls(44);"></div>
+<div class="ttl2" style="position:absolute; top:115px; left:160px;"
+	onclick="setTech(44);" oncontextmenu="lockskill(44); return false;">破壊魔法</div>
+<div class="ttl2" style="position:absolute; top:112px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('44',0,2);">
+</div>
+
+<div class="bar" id="skl45" style="position:absolute; top:142px;"
+	onclick="prp('45',event.offsetX,0)" oncontextmenu="prp('45',event.offsetX,1); return false;" onmousewheel="prpw('45');" onTouchStart="ls(45);"></div>
+<div class="ttl2" style="position:absolute; top:143px; left:160px;"
+	onclick="setTech(45);" oncontextmenu="lockskill(45); return false;">回復魔法</div>
+<div class="ttl2" style="position:absolute; top:140px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('45',0,2);">
+</div>
+
+<div class="bar" id="skl46" style="position:absolute; top:170px;"
+	onclick="prp('46',event.offsetX,0)" oncontextmenu="prp('46',event.offsetX,1); return false;" onmousewheel="prpw('46');" onTouchStart="ls(46);"></div>
+<div class="ttl2" style="position:absolute; top:171px; left:160px;"
+	onclick="setTech(46);" oncontextmenu="lockskill(46); return false;">強化魔法</div>
+<div class="ttl2" style="position:absolute; top:168px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('46',0,2);">
+</div>
+
+<div class="bar" id="skl47" style="position:absolute; top:198px;"
+	onclick="prp('47',event.offsetX,0)" oncontextmenu="prp('47',event.offsetX,1); return false;" onmousewheel="prpw('47');" onTouchStart="ls(47);"></div>
+<div class="ttl2" style="position:absolute; top:199px; left:160px;"
+	onclick="setTech(47);" oncontextmenu="lockskill(47); return false;">神秘魔法</div>
+<div class="ttl2" style="position:absolute; top:196px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('47',0,2);">
+</div>
+
+<div class="bar" id="skl48" style="position:absolute; top:226px;"
+	onclick="prp('48',event.offsetX,0)" oncontextmenu="prp('48',event.offsetX,1); return false;" onmousewheel="prpw('48');" onTouchStart="ls(48);"></div>
+<div class="ttl2" style="position:absolute; top:227px; left:160px;"
+	onclick="setTech(48);" oncontextmenu="lockskill(48); return false;">召喚魔法</div>
+<div class="ttl2" style="position:absolute; top:224px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('48',0,2);">
+</div>
+
+<div class="bar" id="skl49" style="position:absolute; top:254px;"
+	onclick="prp('49',event.offsetX,0)" oncontextmenu="prp('49',event.offsetX,1); return false;" onmousewheel="prpw('49');" onTouchStart="ls(49);"></div>
+<div class="ttl2" style="position:absolute; top:255px; left:160px;"
+	onclick="setTech(49);" oncontextmenu="lockskill(49); return false;">死の魔法</div>
+<div class="ttl2" style="position:absolute; top:252px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('49',0,2);">
+</div>
+
+<div class="bar" id="skl50" style="position:absolute; top:282px;"
+	onclick="prp('50',event.offsetX,0)" oncontextmenu="prp('50',event.offsetX,1); return false;" onmousewheel="prpw('50');" onTouchStart="ls(50);"></div>
+<div class="ttl2" style="position:absolute; top:283px; left:160px;"
+	onclick="setTech(50);" oncontextmenu="lockskill(50); return false;">魔法熟練</div>
+<div class="ttl2" style="position:absolute; top:280px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('50',0,2);">
+</div>
+
+</div>
+
+
+<!-- 熟練３ -->
+<div id="area6" style="position:absolute; top:65px; left:10px; width:300px; z-index:2;">
+
+<div class="bar" id="skl51" style="position:absolute; top:2px;"
+	onclick="prp('51',event.offsetX,0)" oncontextmenu="prp('51',event.offsetX,1); return false;" onmousewheel="prpw('51');" onTouchStart="ls(51);"></div>
+<div class="ttl2" style="position:absolute; top:3px; left:160px;"
+	onclick="setTech(51);" oncontextmenu="lockskill(51); return false;">自然調和</div>
+<div class="ttl2" style="position:absolute; top:0px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('51',0,2);">
+</div>
+
+<div class="bar" id="skl52" style="position:absolute; top:37px;"
+	onclick="prp('52',event.offsetX,0)" oncontextmenu="prp('52',event.offsetX,1); return false;" onmousewheel="prpw('52');" onTouchStart="ls(52);"></div>
+<div class="ttl2" style="position:absolute; top:38px; left:160px;"
+	onclick="setTech(52);" oncontextmenu="lockskill(52); return false;">暗黒命令</div>
+<div class="ttl2" style="position:absolute; top:35px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('52',0,2);">
+</div>
+
+<div class="bar" id="skl53" style="position:absolute; top:72px;"
+	onclick="prp('53',event.offsetX,0)" oncontextmenu="prp('53',event.offsetX,1); return false;" onmousewheel="prpw('53');" onTouchStart="ls(53);"></div>
+<div class="ttl2" style="position:absolute; top:73px; left:160px;"
+	onclick="setTech(53);" oncontextmenu="lockskill(53); return false;">取引</div>
+<div class="ttl2" style="position:absolute; top:70px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('53',0,2);">
+</div>
+
+<div class="bar" id="skl54" style="position:absolute; top:107px;"
+	onclick="prp('54',event.offsetX,0)" oncontextmenu="prp('54',event.offsetX,1); return false;" onmousewheel="prpw('54');" onTouchStart="ls(54);"></div>
+<div class="ttl2" style="position:absolute; top:108px; left:160px;"
+	onclick="setTech(54);" oncontextmenu="lockskill(54); return false;">シャウト</div>
+<div class="ttl2" style="position:absolute; top:105px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('54',0,2);">
+</div>
+
+<div class="bar" id="skl55" style="position:absolute; top:142px;"
+	onclick="prp('55',event.offsetX,0)" oncontextmenu="prp('55',event.offsetX,1); return false;" onmousewheel="prpw('55');" onTouchStart="ls(55);"></div>
+<div class="ttl2" style="position:absolute; top:143px; left:160px;"
+	onclick="setTech(55);" oncontextmenu="lockskill(55); return false;">音楽</div>
+<div class="ttl2" style="position:absolute; top:140px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('55',0,2);">
+</div>
+
+<div class="bar" id="skl56" style="position:absolute; top:177px;"
+	onclick="prp('56',event.offsetX,0)" oncontextmenu="prp('56',event.offsetX,1); return false;" onmousewheel="prpw('56');" onTouchStart="ls(56);"></div>
+<div class="ttl2" style="position:absolute; top:178px; left:160px;"
+	onclick="setTech(56);" oncontextmenu="lockskill(56); return false;">盗み</div>
+<div class="ttl2" style="position:absolute; top:175px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('56',0,2);">
+</div>
+
+<div class="bar" id="skl57" style="position:absolute; top:212px;"
+	onclick="prp('57',event.offsetX,0)" oncontextmenu="prp('57',event.offsetX,1); return false;" onmousewheel="prpw('57');" onTouchStart="ls(57);"></div>
+<div class="ttl2" style="position:absolute; top:213px; left:160px;"
+	onclick="setTech(57);" oncontextmenu="lockskill(57); return false;">ギャンブル</div>
+<div class="ttl2" style="position:absolute; top:210px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('57',0,2);">
+</div>
+
+<div class="bar" id="skl58" style="position:absolute; top:247px;"
+	onclick="prp('58',event.offsetX,0)" oncontextmenu="prp('58',event.offsetX,1); return false;" onmousewheel="prpw('58');" onTouchStart="ls(58);"></div>
+<div class="ttl2" style="position:absolute; top:248px; left:160px;"
+	onclick="setTech(58);" oncontextmenu="lockskill(58); return false;">ﾊﾟﾌｫｰﾏﾝｽ</div>
+<div class="ttl2" style="position:absolute; top:245px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('58',0,2);">
+</div>
+
+<div class="bar" id="skl59" style="position:absolute; top:282px;"
+	onclick="prp('59',event.offsetX,0)" oncontextmenu="prp('59',event.offsetX,1); return false;" onmousewheel="prpw('59');" onTouchStart="ls(59);"></div>
+<div class="ttl2" style="position:absolute; top:283px; left:160px;"
+	onclick="setTech(59);" oncontextmenu="lockskill(59); return false;">ダンス</div>
+<div class="ttl2" style="position:absolute; top:280px; left:220px;">
+<input type="number" class="pnt" maxLength=8 size=8 value="0.0" name="pnt" onblur="prp('59',0,2);">
+</div>
+
+</div>
+
+
+<!-- 計算結果 -->
+
+<div id="area7" style="position:absolute; top:5px; left:10px; width:300px; z-index:1; -webkit-user-select:none;">
+
+<table cellpadding=0 cellspacing=0 border=0 width=280>
+<tbody>
+<tr>
+	<td colspan=6 width=280>
+		<input type="text" class="rslt" name="result" id="result" value="TOTAL : 0　　REST : 850" size=36 readonly>
+	</td>
+</tr>
+<tr><td colspan=6 width=340 style="height:340px;">&nbsp;</td></tr>
+<tr><td colspan=6 width=280><hr size=0 color="#000000"></td></tr>
+<tr>
+	<td colspan=1 width=35>名前</td>
+	<td colspan=5 width=245>： <input type="text" name="cname" value="no name" maxlength="20" size=20 style="font-size:14px;"></td>
+</tr>
+<tr>
+	<td colspan=1 width=35>種族</td>
+	<td colspan=5 width=245>： <select name="race_list" onchange="calcStatus()" style="font-size:14px;">
+		<option value="0">ニューター
+		<option value="1">コグニート
+		<option value="2">エルモニー
+		<option value="3">パンデモス
+		</select></td>
+</tr>
+<tr><td colspan=6 width=280><hr size=0 color="#000000"></td></tr>
+<tr>
+	<td width=35>ＨＰ</td><td nowrap>: <input type="text" class="dsp" name="dsp_hp" value="0" size=4 readonly></td>
+	<td width=35>ＳＴ</td><td nowrap>: <input type="text" class="dsp" name="dsp_st" value="0" size=4 readonly></td>
+	<td width=35>ＭＰ</td><td nowrap>: <input type="text" class="dsp" name="dsp_mp" value="0" size=4 readonly></td>
+</tr><tr>
+	<td>攻撃</td><td nowrap>: <input type="text" class="dsp" name="dsp_atk" value="0" size=4 readonly></td>
+	<td>防御</td><td nowrap>: <input type="text" class="dsp" name="dsp_ac" value="0" size=4 readonly></td>
+	<td>重量</td><td nowrap>: <input type="text" class="dsp" name="dsp_weight" value="0" size=4 readonly></td>
+</tr><tr>
+</tr><tr>
+	<td>回避</td><td nowrap>: <input type="text" class="dsp" name="dsp_flee" value="0" size=4 readonly></td>
+	<td>魔力</td><td nowrap>: <input type="text" class="dsp" name="dsp_magic" value="0" size=4 readonly></td>
+	<td>耐性</td><td nowrap>: <input type="text" class="dsp" name="dsp_mgcreg" value="0" size=4 readonly></td>
+</tr>
+<tr><td colspan=6 width=280><hr size=0 color="#000000"></td></tr>
+<tr>
+	<td colspan=6>
+	<div style="height:24px;" id="log">
+	<p>発動マスタリー</p>
+	</div>
+</td></tr>
+<tr><td colspan=6 width=280><hr size=0 color="#000000"></td></tr>
+<tr>
+	<td colspan=2 height=24 width=100 align=left><input type="submit" class="sbmt" value="スキル計算" onclick="calcStatus();"></td>
+	<td colspan=2 height=24 width=100 align=center> <a class="fnc" href="JavaScript:setMastery();">マスタリ一覧</a></td>
+	<td colspan=2 height=24 width=80 align=right><a class="fnc" href="JavaScript:setShip();">シップ一覧</a></td>
+</tr>
+<tr>
+	<td colspan=3 height=24 width=140><input type="checkbox" class="chk" name="snap" accesskey="s" checked> スナップ機能</td>
+	<td colspan=3 height=24 width=140><input type="checkbox" class="chk" name="cone" accesskey="r" checked> ステ計算連動</td>
+</tr>
+<tr>
+	<td colspan=6 height=24 width=280 title="小数第4位まで表示・計算"><input type="checkbox" class="chk" class="chk" name="premium" onclick="toPremium();"> 詳細表示 (プレミアムチケット)</td>
+</tr>
+<tr>
+	<td colspan=6 height=24 width=280 align=right>
+		<select name="slot" style="font-size:14px;">
+		<option value="0" selected>slot 0 : no save
+		<option value="1">slot 1 : no save
+		<option value="2">slot 2 : no save
+		<option value="3">slot 3 : no save
+		<option value="4">slot 4 : no save
+		<option value="5">slot 5 : no save
+		<option value="6">slot 6 : no save
+		<option value="7">slot 7 : no save
+		<option value="8">slot 8 : no save
+		<option value="9">slot 9 : no save
+		<option value="10">slot 10 : no save
+		<option value="11">slot 11 : no save
+		<option value="12">slot 12 : no save
+		<option value="13">slot 13 : no save
+		<option value="14">slot 14 : no save
+		<option value="15">slot 15 : no save
+		</select></td>
+</tr>
+<tr>
+	<td colspan=3 height=24 width=140><a class="fnc" href="JavaScript:setConfirm('セーブしますか？','saveCookie()');">セーブ</a></td>
+	<td colspan=3 height=24 width=140><a class="fnc" href="JavaScript:setConfirm('ロードしますか？','loadCode()');">ロード</a></td>
+</tr>
+<tr>
+	<td colspan=3 height=24><a class="fnc" href="JavaScript:setConfirm('リセットしますか？','resetData();');">リセット</a></td>
+	<td colspan=3 height=24><a class="fnc" href="waku.html" target="_blank">枠拡張計算</a></td>
+<!-- 	<td colspan=2><a class="fnc" nohref="JavaScript:cfmDelete();">セーブデータ消去</a></td> -->
+</tr>
+<tr>
+	<td colspan=3 height=24><a class="fnc" href="JavaScript:codeCopy(0);">URL出力</a></td>
+	<td colspan=3 height=24><a class="fnc" href="JavaScript:listCopy();">リスト出力</a></td>
+</tr>
+<tr>
+	<td colspan=3 height=24></td>
+	<td colspan=3 height=24><a class="fnc" href="data/faq.html" target="_blank">FAQ</a></td>
+</tr>
+<tr><td colspan=6 width=280><hr size=0 color="#000000"></td></tr>
+<tr><td colspan=6 width=280 align=right><div style="cursor:help;">moeclc v4.39, Last modified 2011/09/21</div></td></tr>
+</tbody>
+</table>
+
+<input type="hidden" name="code" value="">
+<input type="hidden" name="list" value="">
+<input type="hidden" name="list2" value="">
+
+</div>
+
+</form>
+
+<div id="option1" style="position:absolute; top:0px; left:0px; width:0px; height:0px; z-index:5; background-image:url(data/alpha.png);" onclick="JavaScript:offOptionLayer();"></div>
+<div id="option2" style="position:absolute; top:0px; left:0px; width:0px; height:0px; background-color:#ccccdd; z-index:6;">&nbsp;</div>
+<div id="back" style="position:absolute; top:50px; left:10px; width:300px; height:320px; background-color:#ccccdd; z-index:3;">&nbsp;</div>
+
+</body>
+</html>
